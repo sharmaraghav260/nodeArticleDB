@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 mongoose.connect('mongodb://localhost/articleDB');
 
@@ -26,27 +27,17 @@ let Article = require('./models/article');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// Body Parser Middleware
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({
+  extended: false
+}))
+
+// parse application/json
+app.use(bodyParser.json())
+
 // Home Route
 app.get('/', function(req, res) {
-  // let articles = [{
-  //     id: 1,
-  //     title: 'Article one',
-  //     author: 'Raghav Sharma',
-  //     body: 'This is the first article',
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'Article two',
-  //     author: 'John Doe',
-  //     body: 'This is the second article',
-  //   },
-  //   {
-  //     id: 3,
-  //     title: 'Article three',
-  //     author: 'Jane Doe',
-  //     body: 'This is the third  article',
-  //   },
-  // ]
   Article.find({}, function(err, articles) {
     if (err) {
       console.log(err);
@@ -62,8 +53,25 @@ app.get('/', function(req, res) {
 // Adding Arcticles Route
 app.get('/articles/add', function(req, res) {
   res.render('add_article', {
-    title: 'Add Articles',
+    title: 'Add Article',
   });
+});
+
+// Adding Submit POST Route
+app.post('/articles/add', function(req, res) {
+  let article = new Article();
+  article.title = req.body.title;
+  article.author = req.body.author;
+  article.body = req.body.body;
+
+  article.save(function(err) {
+    if (err) {
+      console.log(err);
+      return;
+    } else {
+      res.redirect('/');
+    }
+  })
 });
 
 // Start Server
