@@ -1,0 +1,31 @@
+{
+  "name": "nodearticledb",
+  "version": "1.0.0",
+  "description": "This is a article database with full CRUD functionality using Node, Express and MongoDB.",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sharmaraghav260/nodeArticleDB.git"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "MongoDB",
+    "articleDB"
+  ],
+  "author": "Raghav Sharma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sharmaraghav260/nodeArticleDB/issues"
+  },
+  "homepage": "https://github.com/sharmaraghav260/nodeArticleDB#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mongoose": "^4.11.0",
+    "nodemon": "^1.11.0"
+  }
+}
