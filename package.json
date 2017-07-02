@@ -25,6 +25,7 @@
   "homepage": "https://github.com/sharmaraghav260/nodeArticleDB#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "bower": "^1.8.0",
     "express": "^4.15.3",
     "mongoose": "^4.11.0",
     "nodemon": "^1.11.0",
