@@ -20,8 +20,11 @@ html
               a(href='/') Home
             li
               a(href='/articles/add') Add Article﻿
-            //li
-              a(href='#about') About
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/users/register') Register
+            li
+              a(href='/users/login') Login
     .container
       != messages('message', locals)
       if errors
